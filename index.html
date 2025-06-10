@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+    <head>
+        <title>Light Rail ETA</title>
+        <meta charset="UTF-8">
+        <script src="lightrail.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #040d28;
+                color: #333;
+                margin: 0;
+                padding: 5px;
+                font-size: 1vw;
+            }
+            p{
+                color: #fff;
+            }
+            h1 {
+                color: #ffffff;
+            }
+            form {
+                margin-bottom: 20px;
+            }
+            select, button {
+                padding: 10px;
+                font-size: 16px;
+            }
+            #eta_results {
+                margin: 1%;
+                padding: 10px;
+                background-color: #103296;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            #RecentStations {
+               margin: 1%;
+               font-size: 110%;
+               border-radius: 10px;
+               background-color: #103296;
+            }
+            #RecentStations p {
+                font-size: 5vh;
+                width: 15vw;
+                margin: 0;
+            }
+            #header {
+                font-size: 1.5vw;
+                margin: 1%;
+                padding: 10px;
+                background-color: #103296;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            @media screen and (orientation: portrait){
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #040d28;
+                    color: #333;
+                    margin: 0;
+                    padding: 5px;
+                    font-size: 4.5vw;
+                }
+                #header{
+                    font-size: 4vw;
+                    line-height: 80%;
+                }
+                #RecentStations p {
+                    width: 18vw;
+                    height: 80%;
+                    font-size: 4vw;
+                    text-align: center;
+                    margin: 0;
+                }
+                #RecentStations button {
+                    height: 80%;
+                    margin: 0;
+                    text-align: center;
+                }
+                #eta_results {
+                    font-size: 2vw;
+                }
+            }
+        </style>
+    </head>
+        <body>
+            <div id="header">
+                <h1>Light Rail ETA</h1>
+                <form id="stationForm" onsubmit="return false">
+                    <label for="station"><p>Select a station:</p></label>
+                    <select id="station" name="station">
+                            <option disabled="">－－－第1收費區－－－</option>
+                            <option value="15">蝴蝶Butterfly</option>
+                            <option value="260">豐景園Goodview Garden</option>
+                            <option value="20">輕鐵車廠Light Rail Depot</option>
+                            <option value="30">龍門Lung Mun</option>
+                            <option value="10">美樂Melody Garden</option>
+                            <option value="920">三聖Sam Shing</option>
+                            <option value="240">兆禧Siu Hei</option>
+                            <option value="265">兆麟Siu Lun</option>
+                            <option value="1">屯門碼頭Tuen Mun Ferry Pier</option>
+                            <option value="250">屯門泳池Tuen Mun Swimming Pool</option>
+
+                            <option disabled="">－－－第2收費區－－－</option>
+                            <option value="80">澤豐Affluence</option>
+                            <option value="75">蔡意橋Choy Yee Bridge</option>
+                            <option value="70">河田Ho Tin</option>
+                            <option value="310">何福堂Hoh Fuk Tong</option>
+                            <option value="60">建安Kin On</option>
+                            <option value="200">鳴琴Ming Kum</option>
+                            <option value="230">銀圍Ngan Wai</option>
+                            <option value="270">安定On Ting</option>
+                            <option value="330">景峰Prime View</option>
+                            <option value="300">杯渡Pui To</option>
+                            <option value="320">新墟San Hui</option>
+                            <option value="180">山景（北）Shan King (North)</option>
+                            <option value="190">山景（南）Shan King (South)</option>
+                            <option value="170">石排Shek Pai</option>
+                            <option value="212">大興（北）Tai Hing (North)</option>
+                            <option value="220">大興（南）Tai Hing (South)</option>
+                            <option value="280">市中心Town Centre</option>
+                            <option value="40">青山村Tsing Shan Tsuen</option>
+                            <option value="50">青雲Tsing Wun</option>
+                            <option value="295">屯門Tuen Mun</option>
+                            <option value="275">友愛Yau Oi</option>
+
+                            <option disabled="">－－－第3收費區－－－</option>
+                            <option value="120">青松Ching Chung</option>
+                            <option value="370">鍾屋村Chung Uk Tsuen</option>
+                            <option value="340">鳳地Fung Tei</option>
+                            <option value="110">麒麟Kei Lun</option>
+                            <option value="130">建生Kin Sang</option>
+                            <option value="350">藍地Lam Tei</option>
+                            <option value="150">良景Leung King</option>
+                            <option value="360">泥圍Nai Wai</option>
+                            <option value="160">新圍San Wai</option>
+                            <option value="100">兆康Siu Hong</option>
+                            <option value="140">田景Tin King</option>
+                            <option value="90">屯門醫院Tuen Mun Hospital</option>
+
+                            <option disabled="">－－－第4收費區－－－</option>
+                            <option value="490">翠湖Chestwood</option>
+                            <option value="455">銀座Ginza</option>
+                            <option value="425">坑尾村Hang Mei Tsuen</option>
+                            <option value="380">洪水橋Hung Shui Kiu</option>
+                            <option value="448">樂湖Locwood</option>
+                            <option value="400">屏山Ping Shan</option>
+                            <option value="460">天瑞Tin Shui</option>
+                            <option value="430">天水圍Tin Shui Wai</option>
+                            <option value="435">天慈Tin Tsz</option>
+                            <option value="500">天榮Tin Wing</option>
+                            <option value="450">天湖Tin Wu</option>
+                            <option value="445">天耀Tin Yiu</option>
+                            <option value="390">塘坊村Tong Fong Tsuen</option>
+
+                            <option disabled="">－－－第5收費區－－－</option>
+                            <option value="570">豐年路Fung Nin Road</option>
+                            <option value="580">康樂路Hong Lok Road</option>
+                            <option value="560">水邊圍Shui Pin Wai</option>
+                            <option value="590">大棠路Tai Tong Road</option>
+                            <option value="600">元朗Yuen Long</option>
+
+                            <option disabled="">－－－第5A收費區－－－</option>
+                            <option value="468">頌富Chung Fu</option>
+                            <option value="480">天富Tin Fu</option>
+                            <option value="540">天恆Tin Heng</option>
+                            <option value="520">天秀Tin Sau</option>
+                            <option value="550">天逸Tin Yat</option>
+                            <option value="510">天悅Tin Yuet</option>
+                            <option value="530">濕地公園Wetland Park</option>
+                    </select>
+                    <button onclick="GetETA()">Get ETA</button>
+                </form>
+            </div>
+            <div id="RecentStations">
+                <table>
+                    <tr>
+                        <th><p>507 沿線</p></th>
+                        <th><button onclick="GetETA(250)" class="btn btn-info">屯門泳池</button></th>
+                        <th><button onclick="GetETA(260)" class="btn btn-info">豐景園</button></th>
+                        <th><button onclick="GetETA(280)" class="btn btn-info">市中心</button></th>
+                        <th><button onclick="GetETA(295)" class="btn btn-info">屯門</button></th>
+                        <th><button onclick="GetETA(212)" class="btn btn-info">大興（北）</button></th>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th><p>505 沿線</p></th>
+                        <th><button onclick="GetETA(265)" class="btn btn-info">兆麟</button></th>
+                        <th><button onclick="GetETA(280)" class="btn btn-info">市中心</button></th>
+                        <th><button onclick="GetETA(295)" class="btn btn-info">屯門</button></th>
+                        <th><button onclick="GetETA(190)" class="btn btn-info">山景（南） </button></th>                        
+                        <th><button onclick="GetETA(170)" class="btn btn-info">石排</button></th>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th><p>西鐵站</p></th>
+                        <th><button onclick="GetETA(295)" class="btn btn-info">屯門</button></th>
+                        <th><button onclick="GetETA(100)" class="btn btn-info">兆康</button></th>
+                        <th><button onclick="GetETA(430)" class="btn btn-info">天水圍</button></th>
+                        <th><button onclick="GetETA(600)" class="btn btn-info">元朗</button></th>                        
+                    </tr>
+                </table>
+            </div>
+            <div id="eta_results">
+                <p id="text"> You haven't selected a station yet. </p>
+            </div>
+        </body>
