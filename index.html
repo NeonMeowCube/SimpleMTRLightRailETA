@@ -32,17 +32,37 @@
                 border-radius: 5px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
-            #RecentStations {
-               margin: 1%;
-               font-size: 110%;
-               border-radius: 10px;
-               background-color: #103296;
+            .station-line {
+            margin: 1%;
+            padding: 10px;
+            background-color: #103296;
+            border-radius: 10px;
             }
-            #RecentStations p {
-                font-size: 5vh;
-                width: 15vw;
-                margin: 0;
+
+            .station-line p {
+            color: white;
+            font-size: 2vw;
+            margin-bottom: 10px;
+            margin-top: 0;
             }
+
+            .station-buttons {
+            flex: 1 1 18vw;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            }
+
+            .station-buttons button {
+            flex: 1 1 18vw;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #5bc0de;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            }
+
             #header {
                 font-size: 1.5vw;
                 margin: 1%;
@@ -61,21 +81,36 @@
                     padding: 5px;
                     font-size: 4.5vw;
                 }
+                #header h1{
+                    line-height: 110%;
+                    text-align: center;
+                }
                 #header{
-                    font-size: 4vw;
+                    font-size: 3vw;
                     line-height: 80%;
                 }
-                #RecentStations p {
-                    width: 18vw;
-                    height: 80%;
-                    font-size: 4vw;
-                    text-align: center;
-                    margin: 0;
+                .station-line {
+                    margin: 1%;
+                    padding: 10px;
+                    background-color: #103296;
+                    border-radius: 10px;
                 }
-                #RecentStations button {
-                    height: 80%;
-                    margin: 0;
-                    text-align: center;
+
+                .station-line p {
+                    color: white;
+                    font-size: 3.5vw;
+                    margin-bottom: 10px;
+                    margin-top: 0;
+                }
+
+                .station-buttons button {
+                width: 18vw; /* adjust this as needed for your layout */
+                padding: 0.5%;
+                font-size: 0.85em;
+                background-color: #5bc0de;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
                 }
                 #eta_results {
                     font-size: 2vw;
@@ -173,35 +208,37 @@
                 </form>
             </div>
             <div id="RecentStations">
-                <table>
-                    <tr>
-                        <th><p>507 沿線</p></th>
-                        <th><button onclick="GetETA(250)" class="btn btn-info">屯門泳池</button></th>
-                        <th><button onclick="GetETA(260)" class="btn btn-info">豐景園</button></th>
-                        <th><button onclick="GetETA(280)" class="btn btn-info">市中心</button></th>
-                        <th><button onclick="GetETA(295)" class="btn btn-info">屯門</button></th>
-                        <th><button onclick="GetETA(212)" class="btn btn-info">大興（北）</button></th>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <th><p>505 沿線</p></th>
-                        <th><button onclick="GetETA(265)" class="btn btn-info">兆麟</button></th>
-                        <th><button onclick="GetETA(280)" class="btn btn-info">市中心</button></th>
-                        <th><button onclick="GetETA(295)" class="btn btn-info">屯門</button></th>
-                        <th><button onclick="GetETA(190)" class="btn btn-info">山景（南） </button></th>                        
-                        <th><button onclick="GetETA(170)" class="btn btn-info">石排</button></th>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <th><p>西鐵站</p></th>
-                        <th><button onclick="GetETA(295)" class="btn btn-info">屯門</button></th>
-                        <th><button onclick="GetETA(100)" class="btn btn-info">兆康</button></th>
-                        <th><button onclick="GetETA(430)" class="btn btn-info">天水圍</button></th>
-                        <th><button onclick="GetETA(600)" class="btn btn-info">元朗</button></th>                        
-                    </tr>
-                </table>
+                <div class="station-line">
+                    <p>507 沿線</p>
+                    <div class="station-buttons">
+                    <button onclick="GetETA(250)">屯門泳池</button>
+                    <button onclick="GetETA(260)">豐景園</button>
+                    <button onclick="GetETA(280)">市中心</button>
+                    <button onclick="GetETA(295)">屯門</button>
+                    <button onclick="GetETA(212)">大興(北)</button>
+                    </div>
+                </div>
+
+                <div class="station-line">
+                    <p>505 沿線</p>
+                    <div class="station-buttons">
+                    <button onclick="GetETA(265)">兆麟</button>
+                    <button onclick="GetETA(280)">市中心</button>
+                    <button onclick="GetETA(295)">屯門</button>
+                    <button onclick="GetETA(190)">山景(南)</button>
+                    <button onclick="GetETA(170)">石排</button>
+                    </div>
+                </div>
+
+                <div class="station-line">
+                    <p>西鐵站</p>
+                    <div class="station-buttons">
+                    <button onclick="GetETA(295)">屯門</button>
+                    <button onclick="GetETA(100)">兆康</button>
+                    <button onclick="GetETA(430)">天水圍</button>
+                    <button onclick="GetETA(600)">元朗</button>
+                    </div>
+                </div>
             </div>
             <div id="eta_results">
                 <p id="text"> You haven't selected a station yet. </p>
