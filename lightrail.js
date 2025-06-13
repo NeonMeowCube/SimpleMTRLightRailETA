@@ -1,4 +1,4 @@
-var station = 260;
+var station = 100;
 var response_json = "";
 var decode = "";
 var result = "";
@@ -29,15 +29,15 @@ function formatSchedule(data) {
     
     data.platform_list.forEach(function (platform) {
         console.log("Platform ".concat(platform.platform_id, ":"));
-        result = result + "Platform " + platform.platform_id + ":<br>";
+        result = result + platform.platform_id + " 號月台" + ":<br>";
         if (platform.route_list && platform.route_list.length > 0) {
             platform.route_list.forEach(function (route) {
                 console.log("  ".concat(route.route_no, " - ").concat(route.dest_ch, " - ").concat(route.time_ch, "\n"));
                 // console.log(`    Status: ${route.arrival_departure === 'D' ? 'Departing' : 'Arriving'}`);
                 console.log('    ----------------\n');
-                result = result + route.route_no + " - " + route.dest_ch + " - " + route.time_ch + "<br>";
-                result = result + '    ----------------<br>';
+                result = result + route.route_no + " // " + route.dest_ch + " // " + route.time_ch + " // 車長: " + route.train_length + "<br>";
             });
+            result = result + "<br>";
         }
         else {
             console.log('  No scheduled trains');
