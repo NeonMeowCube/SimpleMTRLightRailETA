@@ -9,8 +9,15 @@
                 background-color: #040d28;
                 color: #333;
                 margin: 0;
-                padding: 5px;
                 font-size: 1vw;
+                width: 100%;
+            }
+            #header {
+                font-size: 1.5vw;
+                margin: 1%;
+                padding: 10px;
+                background-color: #19213a;
+                border-radius: 5px;
             }
             p{
                 color: #fff;
@@ -18,58 +25,50 @@
             h1 {
                 color: #ffffff;
             }
-            form {
-                margin-bottom: 20px;
-            }
             select, button {
                 padding: 10px;
-                font-size: 16px;
+                font-size: 1vw;
             }
             #eta_results {
                 margin: 1%;
                 padding: 10px;
-                background-color: #103296;
+                background-color: #19213a;
                 border-radius: 5px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                clear: both;
             }
             .station-line {
-            margin: 1%;
-            padding: 10px;
-            background-color: #103296;
-            border-radius: 10px;
+                width: 33vw;
+                padding: 1vw;
+                margin: 1vw;
+                background-color: #19213a;
+                border-radius: 10px;
             }
-
             .station-line p {
-            color: white;
-            font-size: 2vw;
-            margin-bottom: 10px;
-            margin-top: 0;
+                color: white;
+                font-size: 2vw;
+                margin-bottom: 10px;
+                margin-top: 0;
             }
-
             .station-buttons {
-            flex: 1 1 18vw;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
             }
-
             .station-buttons button {
-            flex: 1 1 18vw;
-            padding: 10px;
-            font-size: 1em;
-            background-color: #5bc0de;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            }
-
-            #header {
-                font-size: 1.5vw;
-                margin: 1%;
+                flex: 1 1 18vw;
                 padding: 10px;
-                background-color: #103296;
+                font-size: 1em;
+                background-color: #5bc0de;
+                color: #fff;
+                border: none;
                 border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            #RecentStations {
+                display: flex;
+                align-items: flex-start;
+                flex-direction: row;
+                flex: 1 1 auto;
             }
 
             @media screen and (orientation: portrait){
@@ -78,21 +77,28 @@
                     background-color: #040d28;
                     color: #333;
                     margin: 0;
-                    padding: 5px;
                     font-size: 4.5vw;
+                }
+                #header{
+                    column-span: all;
+                    font-size: 3vw;
+                    line-height: 80%;
                 }
                 #header h1{
                     line-height: 110%;
                     text-align: center;
                 }
-                #header{
-                    font-size: 3vw;
-                    line-height: 80%;
+                #header select{
+                    font-size: 80%;
                 }
+
+                #header button{
+                    font-size: 80%
+                }
+
                 .station-line {
                     margin: 1%;
-                    padding: 10px;
-                    background-color: #103296;
+                    background-color: #19213a;
                     border-radius: 10px;
                 }
 
@@ -104,16 +110,17 @@
                 }
 
                 .station-buttons button {
-                width: 18vw; /* adjust this as needed for your layout */
-                padding: 0.5%;
-                font-size: 0.85em;
-                background-color: #5bc0de;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
+                    width: 18vw; /* adjust this as needed for your layout */
+                    padding: 0.5%;
+                    font-size: 0.85em;
+                    background-color: #5bc0de;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
                 }
                 #eta_results {
                     font-size: 2vw;
+                    clear: both;
                 }
             }
         </style>
@@ -207,40 +214,40 @@
                     <button onclick="GetETA()">Get ETA</button>
                 </form>
             </div>
-            <div id="RecentStations">
-                <div class="station-line">
-                    <p>507 沿線</p>
-                    <div class="station-buttons">
-                    <button onclick="GetETA(250)">屯門泳池</button>
-                    <button onclick="GetETA(260)">豐景園</button>
-                    <button onclick="GetETA(280)">市中心</button>
-                    <button onclick="GetETA(295)">屯門</button>
-                    <button onclick="GetETA(212)">大興(北)</button>
-                    </div>
-                </div>
+                <div id="RecentStations" class="side1">
+                    <section class="station-line">
+                        <p>507 沿線</p>
+                        <div class="station-buttons">
+                        <button onclick="GetETA(250)">屯門泳池</button>
+                        <button onclick="GetETA(260)">豐景園</button>
+                        <button onclick="GetETA(280)">市中心</button>
+                        <button onclick="GetETA(295)">屯門</button>
+                        <button onclick="GetETA(212)">大興(北)</button>
+                        </div>
+                    </section>
 
-                <div class="station-line">
-                    <p>505 沿線</p>
-                    <div class="station-buttons">
-                    <button onclick="GetETA(265)">兆麟</button>
-                    <button onclick="GetETA(280)">市中心</button>
-                    <button onclick="GetETA(295)">屯門</button>
-                    <button onclick="GetETA(190)">山景(南)</button>
-                    <button onclick="GetETA(170)">石排</button>
-                    </div>
-                </div>
+                    <section class="station-line">
+                        <p>505 沿線</p>
+                        <div class="station-buttons">
+                        <button onclick="GetETA(265)">兆麟</button>
+                        <button onclick="GetETA(280)">市中心</button>
+                        <button onclick="GetETA(295)">屯門</button>
+                        <button onclick="GetETA(190)">山景(南)</button>
+                        <button onclick="GetETA(170)">石排</button>
+                        </div>
+                    </section>
 
-                <div class="station-line">
-                    <p>西鐵站</p>
-                    <div class="station-buttons">
-                    <button onclick="GetETA(295)">屯門</button>
-                    <button onclick="GetETA(100)">兆康</button>
-                    <button onclick="GetETA(430)">天水圍</button>
-                    <button onclick="GetETA(600)">元朗</button>
-                    </div>
+                    <section class="station-line">
+                        <p>西鐵站</p>
+                        <div class="station-buttons">
+                        <button onclick="GetETA(295)">屯門</button>
+                        <button onclick="GetETA(100)">兆康</button>
+                        <button onclick="GetETA(430)">天水圍</button>
+                        <button onclick="GetETA(600)">元朗</button>
+                        </div>
+                    </section>
                 </div>
-            </div>
-            <div id="eta_results">
-                <p id="text"> You haven't selected a station yet. </p>
-            </div>
+                <div id="eta_results">
+                    <p id="text"> You haven't selected a station yet. </p>
+                </div>
         </body>
